@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body style="background-color: #282a36; color: #fff">
+        <h1>Trabajo Parcial</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Starts</td>
+                    <td>Ends</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for problem in data %}
+                <tr>
+                    <td>{{problem.id}}</td>
+                    <td>{{problem.starts}}</td>
+                    <td>{{problem.ends}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Cronograma de tareas</h2>
+        <div>
+            <ul style="list-style: none">
+                {% for problem in data %}
+                <div style="display: flex">
+                    <p style="width: 100px">Tarea N {{problem.id + 1}}</p>
+                    <li style="display: flex; padding-bottom: 10px; align-items: center">
+                        <div
+                            style="background-color: white;height: 30px;
+                        width:{{problem.starts * 3}}px;"
+                        ></div>
+                        <div
+                            style="background-color: aqua;height: 30px;margin-right: 30px ;width:{{(problem.ends - problem.starts)*3}}px;"
+                        ></div>
+                        <span>From {{problem.starts}} to {{problem.ends}}</span>
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
